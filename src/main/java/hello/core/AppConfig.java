@@ -13,14 +13,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 //spring Container에 Bean(객체) 등록
+//Factory method를 이용하여 bean 등록 및 관리
 @Configuration
 public class AppConfig {
 
     //all config
     @Bean
-    public MemberService memberService() {
+    public MemberService memberService() { // -> Bean name(중복x) @bean(name="~~") 임의 name 지정 가능
         //      DI(Dependency Injection)
-        return new MemberServiceImpl(memberRepository());
+        return new MemberServiceImpl(memberRepository()); //-> Bean 객체
     }
 
     @Bean
